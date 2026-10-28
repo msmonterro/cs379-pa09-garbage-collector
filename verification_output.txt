@@ -1,0 +1,40 @@
+$ python3 test_gc.py
+[PASS] line 1: D1=1; one object
+[PASS] line 2: alias D1=2
+[PASS] line 3: D1=2, D2=1; two objects
+[PASS] line 4: D1=1, D2=2; still two objects
+[PASS] line 5: D1 freed at a=null; D2=2
+[PASS] self-assignment keeps the same count
+[PASS] popping frame releases every local and environment
+[PASS] 1501-object chain allocated
+[PASS] one decref frees entire chain without recursion overflow
+[PASS] field overwrite releases old object and retains new
+[PASS] field self-assignment safe
+[PASS] field update releases overwritten handle
+[PASS] ordinary integer does not change refcount
+[PASS] double release rejected
+[PASS] value: parameter binding retains object
+[PASS] value: caller still owns object before return
+[PASS] value: frame and caller teardown leak no objects
+[PASS] reference: parameter binding retains object
+[PASS] reference write updates both aliases and frees object
+[PASS] reference: frame and caller teardown leak no objects
+[PASS] value-result: parameter binding retains object
+[PASS] value-result: caller still owns object before return
+[PASS] value-result: frame and caller teardown leak no objects
+[PASS] closure return survives callee pop
+[PASS] closure preserves captured environment after its root exits
+[PASS] closure release frees AST, captured environment and object
+[PASS] managed dispatch retains and returns receiver
+[PASS] managed dispatch cleanup reaches zero
+[PASS] parser tracks AST nodes on heap
+[PASS] AST root release cascades through all children
+[PASS] source program reproduces Part A counts
+[PASS] source AST reclaimed after execution
+[PASS] interpreter final scope releases remaining object
+[PASS] exception path releases program AST and scope
+[PASS] cycle counts: (2,2) -> (1,2) -> (1,1)
+[PASS] EXPECTED LEAK: both nodes survive after both variables leave scope
+CYCLE FAILURE DEMONSTRATED: live_count() = 2; refcounts = (1, 1).
+Reference counting cannot reclaim this unreachable cycle. No sweep is performed.
+GC_HEAP_VERIFIED
